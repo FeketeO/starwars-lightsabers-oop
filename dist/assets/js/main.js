@@ -1,4 +1,18 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 ;
+/** --- KLASSZIKUS FÉNYKARD --- */
 var Lightsaber = /** @class */ (function () {
     function Lightsaber(name, id, saberColor, saberLight, hiltHeadType, hiltHeadStyle, hiltNeckType, hiltNeckStyle, hiltMidStyle, hiltEndStyle) {
         this.name = name;
@@ -60,22 +74,43 @@ var Lightsaber = /** @class */ (function () {
     };
     return Lightsaber;
 }());
-// Anakin Skywalker fénykardja
+/** --- RÖVID FÉNYKARD --- */
+var shortSaber = /** @class */ (function (_super) {
+    __extends(shortSaber, _super);
+    function shortSaber(name, id, saberColor, saberLight, hiltHeadType, hiltHeadStyle, hiltNeckType, hiltNeckStyle, hiltMidStyle, hiltEndStyle) {
+        return _super.call(this, name, id, saberColor, saberLight, hiltHeadType, hiltHeadStyle, hiltNeckType, hiltNeckStyle, hiltMidStyle, hiltEndStyle) || this;
+    }
+    shortSaber.prototype.open = function () {
+        var saber = document.querySelector("#" + this.id + " > div");
+        saber.classList.remove('close-short', 'closed');
+        saber.classList.add('open-short');
+    };
+    shortSaber.prototype.close = function () {
+        var saber = document.querySelector("#" + this.id + " > div");
+        saber.classList.remove('open-short');
+        saber.classList.add('close-short');
+    };
+    return shortSaber;
+}(Lightsaber));
+/** --- Anakin Skywalker fénykardja --- */
 var anakinSaber = new Lightsaber('Anakin Skywalker', 'anakin', 'light', 'blue', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
-// Darth Vader fénykardja
+/** --- Darth Vader fénykardja --- */
 var vaderSaber = new Lightsaber('Darth Vader', 'vader', 'light', 'red', 'triangle', 'black', 'none', 'black', 'black', 'black-silver');
-// Obi-Wan Kenobi fénykard
+/** --- Obi-Wan Kenobi fénykardja --- */
 var obiwanSaber = new Lightsaber('Obi-Wan Kenobi', 'obiwan', 'light', 'blue', 'flat', 'black', 'simple', 'silver', 'black-silver-90', 'silver');
-// Yoda fénykardja
-var yodaSaber = new Lightsaber('Yoda', 'yoda', 'light', 'green', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
-// Mace Windu fénykardja
+/** --- Mace Windu fénykardja --- */
 var winduSaber = new Lightsaber('Mace Windu', 'windu', 'light', 'purple', 'rounded', 'silver', 'simple', 'black', 'silver', 'black');
-// Templomi gárdista fénykardja
+/** --- Templomi gárdista fénykardja --- */
 var templeSaber = new Lightsaber('Temple Guard', 'temple', 'light', 'orange', 'triangle', 'gold', 'simple', 'gold', 'white', 'gold');
-// Ahsoka Tano fénykardja
-var ahsokaSaber = new Lightsaber('Ahsoka Tano', 'ahsoka', 'light', 'white', 'flat', 'silver', 'simple', 'silver', 'silver', 'silver');
-// Darksaber fénykard
+/** --- DarkSaber fénykard --- */
 var darkSaber = new Lightsaber('Darksaber', 'darksaber', 'dark', 'white', 'flat', 'black', 'simple', 'black', 'black', 'black');
-// Luke Skywalker fénykardja
+/** --- Luke Skywalker fénykardja --- */
 var lukeSaber = new Lightsaber('Luke Skywalker', 'luke', 'light', 'green', 'diskette', 'silver', 'thin', 'darksilver', 'black-silver-90', 'silver');
+/** --- Ahsoka Tano fénykardja --- */
+var ahsokaSaber = new Lightsaber('Ahsoka Tano', 'ahsoka', 'light', 'white', 'flat', 'silver', 'simple', 'silver', 'silver', 'silver');
+/** --- Ahsoka Tano rövid fénykardja --- */
+var ahsokaShort = new shortSaber('Ahsoka Tano', 'ahsoka-short', 'light', 'white', 'flat', 'silver', 'none', 'silver', 'silver', 'silver');
+/** --- Yoda rövid fénykardja --- */
+var yodaSaber = new shortSaber('Yoda', 'yoda', 'light', 'green', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
+/** --- Random fénykard --- */
 var randomSaber = new Lightsaber('Random Saber', 'randomsaber', 'light', 'orange', 'diskette', 'gold', 'thin', 'darksilver', 'white', 'darksilver');

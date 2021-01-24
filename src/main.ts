@@ -1,3 +1,6 @@
+
+
+/** --- FÉNYKARD INTERFACE --- */ 
 interface ILightsaber {
 
     // Név
@@ -5,13 +8,13 @@ interface ILightsaber {
     id: string;
 
     // Penge
-    saberColor: string;         // light | dark
-    saberLight: string;         // red | green | blue | orange | purple | white
+    saberColor: string;         //  light | dark
+    saberLight: string;         //  red | green | blue | orange | purple | white
 
     // Markolat
-    hiltHeadType: string;       // diskette | triangle | flat | rounded
-    hiltHeadStyle: string;      // silver | darksilver | black-silver | black-silver-90 | black | gold | white
-    hiltNeckType: string;       // simple | thin | none
+    hiltHeadType: string;       //  diskette | triangle | flat | rounded
+    hiltHeadStyle: string;      //  silver | darksilver | black-silver | black-silver-90 | black | gold | white
+    hiltNeckType: string;       //  simple | thin | none
     hiltNeckStyle: string;
     hiltMidStyle: string;
     hiltEndStyle: string;
@@ -25,7 +28,7 @@ interface ILightsaber {
 
 
 
-
+/** --- KLASSZIKUS FÉNYKARD --- */ 
 class Lightsaber implements ILightsaber {
 
     name: string;
@@ -118,32 +121,57 @@ class Lightsaber implements ILightsaber {
 }
 
 
-// Anakin Skywalker fénykardja
+/** --- RÖVID FÉNYKARD --- */ 
+class shortSaber extends Lightsaber {
+
+    constructor (name: string, id: string, saberColor: string, saberLight: string, hiltHeadType: string, hiltHeadStyle: string, hiltNeckType: string, hiltNeckStyle: string, hiltMidStyle: string, hiltEndStyle: string) {
+        super(name, id, saberColor, saberLight, hiltHeadType, hiltHeadStyle, hiltNeckType, hiltNeckStyle, hiltMidStyle, hiltEndStyle);
+    }
+
+    open(): void {
+        let saber = document.querySelector(`#${this.id} > div`);
+        saber.classList.remove('close-short', 'closed');
+        saber.classList.add('open-short');
+    }
+
+    close(): void {
+        let saber = document.querySelector(`#${this.id} > div`);
+        saber.classList.remove('open-short');
+        saber.classList.add('close-short');
+    }
+
+}
+
+
+/** --- Anakin Skywalker fénykardja --- */
 const anakinSaber =  new Lightsaber('Anakin Skywalker', 'anakin', 'light', 'blue', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
 
-// Darth Vader fénykardja
+/** --- Darth Vader fénykardja --- */
 const vaderSaber = new Lightsaber('Darth Vader', 'vader', 'light', 'red', 'triangle', 'black', 'none', 'black', 'black', 'black-silver');
 
-// Obi-Wan Kenobi fénykard
+/** --- Obi-Wan Kenobi fénykardja --- */
 const obiwanSaber =  new Lightsaber('Obi-Wan Kenobi', 'obiwan', 'light', 'blue', 'flat', 'black', 'simple', 'silver', 'black-silver-90', 'silver');
 
-// Yoda fénykardja
-const yodaSaber =  new Lightsaber('Yoda', 'yoda', 'light', 'green', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
-
-// Mace Windu fénykardja
+/** --- Mace Windu fénykardja --- */
 const winduSaber =  new Lightsaber('Mace Windu', 'windu', 'light', 'purple', 'rounded', 'silver', 'simple', 'black', 'silver', 'black');
 
-// Templomi gárdista fénykardja
+/** --- Templomi gárdista fénykardja --- */
 const templeSaber =  new Lightsaber('Temple Guard', 'temple', 'light', 'orange', 'triangle', 'gold', 'simple', 'gold', 'white', 'gold');
 
-// Ahsoka Tano fénykardja
-const ahsokaSaber =  new Lightsaber('Ahsoka Tano', 'ahsoka', 'light', 'white', 'flat', 'silver', 'simple', 'silver', 'silver', 'silver');
-
-// Darksaber fénykard
+/** --- DarkSaber fénykard --- */
 const darkSaber =  new Lightsaber('Darksaber', 'darksaber', 'dark', 'white', 'flat', 'black', 'simple', 'black', 'black', 'black');
 
-// Luke Skywalker fénykardja
+/** --- Luke Skywalker fénykardja --- */
 const lukeSaber =  new Lightsaber('Luke Skywalker', 'luke', 'light', 'green', 'diskette', 'silver', 'thin', 'darksilver', 'black-silver-90', 'silver');
 
+/** --- Ahsoka Tano fénykardja --- */
+const ahsokaSaber =  new Lightsaber('Ahsoka Tano', 'ahsoka', 'light', 'white', 'flat', 'silver', 'simple', 'silver', 'silver', 'silver');
 
+/** --- Ahsoka Tano rövid fénykardja --- */
+const ahsokaShort =  new shortSaber('Ahsoka Tano', 'ahsoka-short', 'light', 'white', 'flat', 'silver', 'none', 'silver', 'silver', 'silver');
+
+/** --- Yoda rövid fénykardja --- */
+const yodaSaber =  new shortSaber('Yoda', 'yoda', 'light', 'green', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
+
+/** --- Random fénykard --- */
 const randomSaber =  new Lightsaber('Random Saber', 'randomsaber', 'light', 'orange', 'diskette', 'gold', 'thin', 'darksilver', 'white', 'darksilver');
