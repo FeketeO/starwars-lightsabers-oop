@@ -19,6 +19,8 @@ interface ILightsaber {
     // Metódusok
     open(): void;
     close(): void;
+    title(): void;
+    spin(): void;
   };
 
 
@@ -40,6 +42,7 @@ class Lightsaber implements ILightsaber {
     constructor (name: string, id: string, saberColor: string, saberLight: string, hiltHeadType: string, hiltHeadStyle: string, hiltNeckType: string, hiltNeckStyle: string, hiltMidStyle: string, hiltEndStyle: string) {
         this.name = name;
         this.id = id;
+        this.saberLight = saberLight;
 
         const container = document.querySelector('.container');
 
@@ -101,6 +104,15 @@ class Lightsaber implements ILightsaber {
         let saber = document.querySelector(`#${this.id} > div`);
         saber.classList.remove('open');
         saber.classList.add('close');
+    }
+
+    title(): string {
+        return (`Ez a fénykard ${this.name} tulajdona, akinek köszönhetően a benne található kristály ${this.saberLight} színű fénnyalábot sugároz ki.`);
+    }
+
+    spin(): void {
+        let saber = document.querySelector(`#${this.id}`);
+        saber.classList.toggle('spin');
     }
 
 }

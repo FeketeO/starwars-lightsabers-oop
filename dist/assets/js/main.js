@@ -3,6 +3,7 @@ var Lightsaber = /** @class */ (function () {
     function Lightsaber(name, id, saberColor, saberLight, hiltHeadType, hiltHeadStyle, hiltNeckType, hiltNeckStyle, hiltMidStyle, hiltEndStyle) {
         this.name = name;
         this.id = id;
+        this.saberLight = saberLight;
         var container = document.querySelector('.container');
         var newSaber = document.createElement("div");
         newSaber.classList.add('lightsaber');
@@ -49,6 +50,13 @@ var Lightsaber = /** @class */ (function () {
         var saber = document.querySelector("#" + this.id + " > div");
         saber.classList.remove('open');
         saber.classList.add('close');
+    };
+    Lightsaber.prototype.title = function () {
+        return ("Ez a f\u00E9nykard " + this.name + " tulajdona, akinek k\u00F6sz\u00F6nhet\u0151en a benne tal\u00E1lhat\u00F3 krist\u00E1ly " + this.saberLight + " sz\u00EDn\u0171 f\u00E9nnyal\u00E1bot sug\u00E1roz ki.");
+    };
+    Lightsaber.prototype.spin = function () {
+        var saber = document.querySelector("#" + this.id);
+        saber.classList.toggle('spin');
     };
     return Lightsaber;
 }());
