@@ -27,6 +27,17 @@ Typescript: npm i -g typescript
 tsc --watch ./src/main --outDir ./dist/assets/js
 
 
+
+
+
+
+
+
+
+
+
+
+
 ### Projekt felépítése:
 
 - Fénykard interface

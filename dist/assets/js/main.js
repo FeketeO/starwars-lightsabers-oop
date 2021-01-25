@@ -11,7 +11,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-;
 /** --- KLASSZIKUS FÉNYKARD --- */
 var Lightsaber = /** @class */ (function () {
     function Lightsaber(name, id, saberColor, saberLight, hiltHeadType, hiltHeadStyle, hiltNeckType, hiltNeckStyle, hiltMidStyle, hiltEndStyle) {
@@ -55,6 +54,7 @@ var Lightsaber = /** @class */ (function () {
         newController.appendChild(newOffController);
         newOffController.addEventListener('click', this.close.bind(this));
     }
+    // Metódusok
     Lightsaber.prototype.open = function () {
         var saber = document.querySelector("#" + this.id + " > div");
         saber.classList.remove('close', 'closed');
@@ -113,4 +113,4 @@ var ahsokaShort = new shortSaber('Ahsoka Tano', 'ahsoka-short', 'light', 'white'
 /** --- Yoda rövid fénykardja --- */
 var yodaSaber = new shortSaber('Yoda', 'yoda', 'light', 'green', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
 /** --- Random fénykard --- */
-var randomSaber = new Lightsaber('Random Saber', 'randomsaber', 'light', 'orange', 'diskette', 'gold', 'thin', 'darksilver', 'white', 'darksilver');
+var randomSaber = new Lightsaber('Troy Fortuna', 'fortuna', 'dark', 'white', 'triangle', 'black-silver-90', 'thin', 'black-silver', 'black-silver-90', 'black-silver');

@@ -1,5 +1,3 @@
-
-
 /** --- FÉNYKARD INTERFACE --- */ 
 interface ILightsaber {
 
@@ -22,10 +20,10 @@ interface ILightsaber {
     // Metódusok
     open(): void;
     close(): void;
-    title(): void;
+    title(): string;
     spin(): void;
-  };
 
+}
 
 
 /** --- KLASSZIKUS FÉNYKARD --- */ 
@@ -94,9 +92,9 @@ class Lightsaber implements ILightsaber {
         newOffController.textContent = 'O';
         newController.appendChild(newOffController);
         newOffController.addEventListener('click', this.close.bind(this));
-
     }
 
+    // Metódusok
     open(): void {
         let saber = document.querySelector(`#${this.id} > div`);
         saber.classList.remove('close', 'closed');
@@ -117,7 +115,6 @@ class Lightsaber implements ILightsaber {
         let saber = document.querySelector(`#${this.id}`);
         saber.classList.toggle('spin');
     }
-
 }
 
 
@@ -174,4 +171,5 @@ const ahsokaShort =  new shortSaber('Ahsoka Tano', 'ahsoka-short', 'light', 'whi
 const yodaSaber =  new shortSaber('Yoda', 'yoda', 'light', 'green', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
 
 /** --- Random fénykard --- */
-const randomSaber =  new Lightsaber('Random Saber', 'randomsaber', 'light', 'orange', 'diskette', 'gold', 'thin', 'darksilver', 'white', 'darksilver');
+const randomSaber =  new Lightsaber('Troy Fortuna', 'fortuna', 'dark', 'white', 'triangle', 'black-silver-90', 'thin', 'black-silver', 'black-silver-90', 'black-silver');
+
