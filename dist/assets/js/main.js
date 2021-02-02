@@ -11,50 +11,53 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-/** --- KLASSZIKUS FÉNYKARD --- */
+//class creation
+// classic ligthsaber
 var Lightsaber = /** @class */ (function () {
     function Lightsaber(name, id, saberColor, saberLight, hiltHeadType, hiltHeadStyle, hiltNeckType, hiltNeckStyle, hiltMidStyle, hiltEndStyle) {
         this.name = name;
         this.id = id;
         this.saberLight = saberLight;
         var container = document.querySelector('.container');
-        var newSaber = document.createElement("div");
+        var newSaber = document.createElement('div');
         newSaber.classList.add('lightsaber');
         newSaber.id = id;
         container.appendChild(newSaber);
-        var newSaberSaber = document.createElement("div");
+        var newSaberSaber = document.createElement('div');
         newSaberSaber.classList.add('lightsaber__saber', saberColor, saberLight, 'closed');
         newSaber.appendChild(newSaberSaber);
-        var newSaberHilt = document.createElement("div");
-        newSaberHilt.classList.add('lightsaber__hilt');
+        var newSaberHilt = document.createElement('div');
+        newSaberHilt.classList.add('ligtsaber__hilt');
         newSaber.appendChild(newSaberHilt);
-        var newSaberHilt1 = document.createElement("div");
-        newSaberHilt1.classList.add('lightsaber__hilt--1-' + hiltHeadType, 'hilt__' + hiltHeadStyle);
-        newSaberHilt.appendChild(newSaberHilt1);
-        var newSaberHilt2 = document.createElement("div");
-        newSaberHilt2.classList.add('lightsaber__hilt--2-' + hiltNeckType, 'hilt__' + hiltNeckStyle);
-        newSaberHilt.appendChild(newSaberHilt2);
-        var newSaberHilt3 = document.createElement("div");
-        newSaberHilt3.classList.add('lightsaber__hilt--3', 'hilt__' + hiltMidStyle);
-        newSaberHilt.appendChild(newSaberHilt3);
-        var newSaberHilt4 = document.createElement("div");
-        newSaberHilt4.classList.add('lightsaber__hilt--4', 'hilt__' + hiltEndStyle);
-        newSaberHilt.appendChild(newSaberHilt4);
-        var newName = document.createElement("span");
+        var newSaberHiltHead = document.createElement('div');
+        newSaberHiltHead.classList.add('lightsaber__hilt--head-' + hiltHeadType, 'hilt__' + hiltHeadStyle);
+        newSaberHilt.appendChild(newSaberHiltHead);
+        var newSaberHiltNeck = document.createElement('div');
+        newSaberHiltNeck.classList.add('lightsaber__hilt--neck-' + hiltNeckType, 'hilt__' + hiltNeckStyle);
+        newSaberHilt.appendChild(newSaberHiltNeck);
+        var newSaberHiltMid = document.createElement('div');
+        newSaberHiltMid.classList.add('lightsaber__hilt--mid', 'hilt__' + hiltMidStyle);
+        newSaberHilt.appendChild(newSaberHiltMid);
+        var newSaberHiltEnd = document.createElement('div');
+        newSaberHiltEnd.classList.add('lightsaber__hilt--end', 'hilt__' + hiltEndStyle);
+        newSaberHilt.appendChild(newSaberHiltEnd);
+        var newName = document.createElement('span');
         newName.textContent = this.name;
         newSaber.appendChild(newName);
-        var newController = document.createElement("p");
+        var newController = document.createElement('p');
         newSaber.appendChild(newController);
-        var newOnController = document.createElement("button");
+        var newOnController = document.createElement('button');
         newOnController.textContent = 'I';
         newController.appendChild(newOnController);
         newOnController.addEventListener('click', this.open.bind(this));
-        var newOffController = document.createElement("button");
+        var newOffController = document.createElement('button');
         newOffController.textContent = 'O';
         newController.appendChild(newOffController);
         newOffController.addEventListener('click', this.close.bind(this));
+        var newTable = document.createElement('a');
+        newTable.textContent = this.title.apply(this);
+        newSaber.appendChild(newTable);
     }
-    // Metódusok
     Lightsaber.prototype.open = function () {
         var saber = document.querySelector("#" + this.id + " > div");
         saber.classList.remove('close', 'closed');
@@ -66,7 +69,7 @@ var Lightsaber = /** @class */ (function () {
         saber.classList.add('close');
     };
     Lightsaber.prototype.title = function () {
-        return ("Ez a f\u00E9nykard " + this.name + " tulajdona, akinek k\u00F6sz\u00F6nhet\u0151en a benne tal\u00E1lhat\u00F3 krist\u00E1ly " + this.saberLight + " sz\u00EDn\u0171 f\u00E9nnyal\u00E1bot sug\u00E1roz ki.");
+        return "This lightsaber is owned by " + this.name + ", thanks to whom the crystal in it emits a beam of " + this.saberLight + " light.";
     };
     Lightsaber.prototype.spin = function () {
         var saber = document.querySelector("#" + this.id);
@@ -74,7 +77,6 @@ var Lightsaber = /** @class */ (function () {
     };
     return Lightsaber;
 }());
-/** --- RÖVID FÉNYKARD --- */
 var shortSaber = /** @class */ (function (_super) {
     __extends(shortSaber, _super);
     function shortSaber(name, id, saberColor, saberLight, hiltHeadType, hiltHeadStyle, hiltNeckType, hiltNeckStyle, hiltMidStyle, hiltEndStyle) {
@@ -92,9 +94,7 @@ var shortSaber = /** @class */ (function (_super) {
     };
     return shortSaber;
 }(Lightsaber));
-/** --- Anakin Skywalker fénykardja --- */
 var anakinSaber = new Lightsaber('Anakin Skywalker', 'anakin', 'light', 'blue', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
-/** --- Darth Vader fénykardja --- */
 var vaderSaber = new Lightsaber('Darth Vader', 'vader', 'light', 'red', 'triangle', 'black', 'none', 'black', 'black', 'black-silver');
 /** --- Obi-Wan Kenobi fénykardja --- */
 var obiwanSaber = new Lightsaber('Obi-Wan Kenobi', 'obiwan', 'light', 'blue', 'flat', 'black', 'simple', 'silver', 'black-silver-90', 'silver');
@@ -113,4 +113,4 @@ var ahsokaShort = new shortSaber('Ahsoka Tano', 'ahsoka-short', 'light', 'white'
 /** --- Yoda rövid fénykardja --- */
 var yodaSaber = new shortSaber('Yoda', 'yoda', 'light', 'green', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
 /** --- Random fénykard --- */
-var randomSaber = new Lightsaber('Troy Fortuna', 'fortuna', 'dark', 'white', 'triangle', 'black-silver-90', 'thin', 'black-silver', 'black-silver-90', 'black-silver');
+var randomSaber = new Lightsaber('Troy Fortuna', 'fortuna', 'dark', 'orange', 'triangle', 'black-silver-90', 'thin', 'black-silver', 'black-silver-90', 'black-silver');

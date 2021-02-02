@@ -1,152 +1,153 @@
-/** --- FÉNYKARD INTERFACE --- */ 
-interface ILightsaber {
-
-    // Név
+ interface ILightsaber {
+    //name
     name: string;
     id: string;
 
-    // Penge
-    saberColor: string;         //  light | dark
-    saberLight: string;         //  red | green | blue | orange | purple | white
+    //blade
+    saberColor: string;         // ligt, dark
+    saberLight: string;         // red, green, blue, orange, purple, white
 
-    // Markolat
-    hiltHeadType: string;       //  diskette | triangle | flat | rounded
-    hiltHeadStyle: string;      //  silver | darksilver | black-silver | black-silver-90 | black | gold | white
-    hiltNeckType: string;       //  simple | thin | none
-    hiltNeckStyle: string;
-    hiltMidStyle: string;
-    hiltEndStyle: string;
+    //hilt
+    hiltHeadType: string;       //diskette, trinagle, flat, rounded
+    hiltHeadStyle: string;      //silver, darksilver, blacksilver, blacksilver-90, black, gold, white
+    hiltNeckType: string;       //simple, thin, none
+    hiltNeckStyle: string;      //silver, darksilver, blacksilver, blacksilver-90, black, gold, white
+    hiltMidStyle: string;       //silver, darksilver, blacksilver, blacksilver-90, black, gold, white
+    hiltEndStyle: string;       //silver, darksilver, blacksilver, blacksilver-90, black, gold, white
 
-    // Metódusok
+    //methods
     open(): void;
     close(): void;
     title(): string;
     spin(): void;
-
+   
 }
 
-
-/** --- KLASSZIKUS FÉNYKARD --- */ 
-class Lightsaber implements ILightsaber {
-
+        //class creation
+        // classic ligthsaber
+    class Lightsaber implements ILightsaber {
     name: string;
     id: string;
-    saberColor: string;
-    saberLight: string;
-    hiltHeadType: string;
-    hiltHeadStyle: string;
-    hiltNeckType: string;
-    hiltNeckStyle: string;
-    hiltMidStyle: string;
+    saberColor: string;       
+    saberLight: string; 
+    hiltHeadType: string;       
+    hiltHeadStyle: string;     
+    hiltNeckType: string;       
+    hiltNeckStyle: string;      
+    hiltMidStyle: string;      
     hiltEndStyle: string;
-
+    
+    
     constructor (name: string, id: string, saberColor: string, saberLight: string, hiltHeadType: string, hiltHeadStyle: string, hiltNeckType: string, hiltNeckStyle: string, hiltMidStyle: string, hiltEndStyle: string) {
         this.name = name;
-        this.id = id;
+        this.id= id;
         this.saberLight = saberLight;
 
-        const container = document.querySelector('.container');
+    const container = document.querySelector('.container');
 
-        let newSaber = document.createElement("div");
+        let newSaber = document.createElement('div');
         newSaber.classList.add('lightsaber');
         newSaber.id = id;
         container.appendChild(newSaber);
 
-        let newSaberSaber = document.createElement("div");
+        let newSaberSaber = document.createElement('div');
         newSaberSaber.classList.add('lightsaber__saber', saberColor, saberLight, 'closed');
         newSaber.appendChild(newSaberSaber);
 
-        let newSaberHilt = document.createElement("div");
-        newSaberHilt.classList.add('lightsaber__hilt');
+        let newSaberHilt = document.createElement('div');
+        newSaberHilt.classList.add('ligtsaber__hilt');
         newSaber.appendChild(newSaberHilt);
 
-        let newSaberHilt1 = document.createElement("div");
-        newSaberHilt1.classList.add('lightsaber__hilt--1-'+hiltHeadType, 'hilt__'+hiltHeadStyle);
-        newSaberHilt.appendChild(newSaberHilt1);
+        let newSaberHiltHead = document.createElement('div');
+        newSaberHiltHead.classList.add('lightsaber__hilt--head-'+hiltHeadType, 'hilt__'+hiltHeadStyle);
+        newSaberHilt.appendChild(newSaberHiltHead);
 
-        let newSaberHilt2 = document.createElement("div");
-        newSaberHilt2.classList.add('lightsaber__hilt--2-'+hiltNeckType, 'hilt__'+hiltNeckStyle);
-        newSaberHilt.appendChild(newSaberHilt2);
+        let newSaberHiltNeck = document.createElement('div');
+        newSaberHiltNeck.classList.add('lightsaber__hilt--neck-'+hiltNeckType, 'hilt__'+hiltNeckStyle)
+        newSaberHilt.appendChild(newSaberHiltNeck);
 
-        let newSaberHilt3 = document.createElement("div");
-        newSaberHilt3.classList.add('lightsaber__hilt--3', 'hilt__'+hiltMidStyle);
-        newSaberHilt.appendChild(newSaberHilt3);
+        let newSaberHiltMid = document.createElement('div');
+        newSaberHiltMid.classList.add('lightsaber__hilt--mid', 'hilt__'+hiltMidStyle);
+        newSaberHilt.appendChild(newSaberHiltMid);
 
-        let newSaberHilt4 = document.createElement("div");
-        newSaberHilt4.classList.add('lightsaber__hilt--4', 'hilt__'+hiltEndStyle);
-        newSaberHilt.appendChild(newSaberHilt4);
+        let newSaberHiltEnd = document.createElement('div');
+        newSaberHiltEnd.classList.add('lightsaber__hilt--end', 'hilt__'+hiltEndStyle);
+        newSaberHilt.appendChild(newSaberHiltEnd);
 
-        let newName = document.createElement("span");
-        newName.textContent = this.name;
+        let newName = document.createElement('span');
+        newName.textContent= this.name;
         newSaber.appendChild(newName);
 
-        let newController = document.createElement("p");
+        let newController = document.createElement('p');
         newSaber.appendChild(newController);
 
-        let newOnController = document.createElement("button");
+        let newOnController = document.createElement('button');
         newOnController.textContent = 'I';
         newController.appendChild(newOnController);
         newOnController.addEventListener('click', this.open.bind(this));
 
-        let newOffController = document.createElement("button");
+        let newOffController = document.createElement('button');
         newOffController.textContent = 'O';
         newController.appendChild(newOffController);
         newOffController.addEventListener('click', this.close.bind(this));
-    }
 
-    // Metódusok
+
+        let newTable = document.createElement('a');
+        newTable.textContent= this.title.apply(this);
+        newSaber.appendChild(newTable);
+        
+
+    }
+    
+
     open(): void {
         let saber = document.querySelector(`#${this.id} > div`);
         saber.classList.remove('close', 'closed');
         saber.classList.add('open');
     }
-
     close(): void {
-        let saber = document.querySelector(`#${this.id} > div`);
-        saber.classList.remove('open');
-        saber.classList.add('close');
+    let saber = document.querySelector(`#${this.id} > div`);
+    saber.classList.remove('open');
+    saber.classList.add('close');
     }
 
     title(): string {
-        return (`Ez a fénykard ${this.name} tulajdona, akinek köszönhetően a benne található kristály ${this.saberLight} színű fénnyalábot sugároz ki.`);
+        return `This lightsaber is owned by ${this.name}, thanks to whom the crystal in it emits a beam of ${this.saberLight} light.`
     }
 
     spin(): void {
-        let saber = document.querySelector(`#${this.id}`);
+        let saber = document.querySelector(`#${this.id}`)
         saber.classList.toggle('spin');
     }
-}
-
-
-/** --- RÖVID FÉNYKARD --- */ 
-class shortSaber extends Lightsaber {
-
-    constructor (name: string, id: string, saberColor: string, saberLight: string, hiltHeadType: string, hiltHeadStyle: string, hiltNeckType: string, hiltNeckStyle: string, hiltMidStyle: string, hiltEndStyle: string) {
-        super(name, id, saberColor, saberLight, hiltHeadType, hiltHeadStyle, hiltNeckType, hiltNeckStyle, hiltMidStyle, hiltEndStyle);
-    }
-
-    open(): void {
-        let saber = document.querySelector(`#${this.id} > div`);
-        saber.classList.remove('close-short', 'closed');
-        saber.classList.add('open-short');
-    }
-
-    close(): void {
-        let saber = document.querySelector(`#${this.id} > div`);
-        saber.classList.remove('open-short');
-        saber.classList.add('close-short');
-    }
 
 }
 
 
-/** --- Anakin Skywalker fénykardja --- */
-const anakinSaber =  new Lightsaber('Anakin Skywalker', 'anakin', 'light', 'blue', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
+    class shortSaber extends Lightsaber {
 
-/** --- Darth Vader fénykardja --- */
-const vaderSaber = new Lightsaber('Darth Vader', 'vader', 'light', 'red', 'triangle', 'black', 'none', 'black', 'black', 'black-silver');
+        constructor (name: string, id: string, saberColor: string, saberLight: string, hiltHeadType: string, hiltHeadStyle: string, hiltNeckType: string, hiltNeckStyle: string, hiltMidStyle: string, hiltEndStyle: string) {
+            super(name, id, saberColor, saberLight, hiltHeadType, hiltHeadStyle, hiltNeckType, hiltNeckStyle, hiltMidStyle, hiltEndStyle);
+        }
+    
+        open(): void {
+            let saber = document.querySelector(`#${this.id} > div`);
+            saber.classList.remove('close-short', 'closed');
+            saber.classList.add('open-short');
+        }
+    
+        close(): void {
+            let saber = document.querySelector(`#${this.id} > div`);
+            saber.classList.remove('open-short');
+            saber.classList.add('close-short');
+        }
+    
+    }
 
-/** --- Obi-Wan Kenobi fénykardja --- */
+    const anakinSaber = new Lightsaber('Anakin Skywalker', 'anakin', 'light', 'blue', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
+
+    const vaderSaber = new Lightsaber('Darth Vader', 'vader', 'light', 'red', 'triangle', 'black', 'none', 'black', 'black', 'black-silver');
+
+    /** --- Obi-Wan Kenobi fénykardja --- */
 const obiwanSaber =  new Lightsaber('Obi-Wan Kenobi', 'obiwan', 'light', 'blue', 'flat', 'black', 'simple', 'silver', 'black-silver-90', 'silver');
 
 /** --- Mace Windu fénykardja --- */
@@ -171,5 +172,4 @@ const ahsokaShort =  new shortSaber('Ahsoka Tano', 'ahsoka-short', 'light', 'whi
 const yodaSaber =  new shortSaber('Yoda', 'yoda', 'light', 'green', 'triangle', 'silver', 'none', 'silver', 'silver', 'black-silver');
 
 /** --- Random fénykard --- */
-const randomSaber =  new Lightsaber('Troy Fortuna', 'fortuna', 'dark', 'white', 'triangle', 'black-silver-90', 'thin', 'black-silver', 'black-silver-90', 'black-silver');
-
+const randomSaber =  new Lightsaber('Troy Fortuna', 'fortuna', 'dark', 'orange', 'triangle', 'black-silver-90', 'thin', 'black-silver', 'black-silver-90', 'black-silver');

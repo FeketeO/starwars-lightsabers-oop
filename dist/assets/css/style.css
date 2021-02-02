@@ -65,6 +65,33 @@ body {
         opacity: 1;
     }
 
+    /* proba */
+    .lightsaber a {
+        display: block;
+        position: absolute;
+        bottom: -100px;
+        background-color: rgba(255, 255, 255, .8);
+        color:rgba(0, 0, 0, .8);
+        padding: 0 12px;
+        font-size: .7rem;
+        transform: translateX(-50px) scale(.5);
+        text-align: bottom;
+        opacity: 0;
+        transition: all .3s ease-in-out;
+        width: 500px;
+        height: 45px;
+        line-height: 20px;
+        border-radius: 15px;
+        font-weight: bold;
+    }
+
+    .lightsaber:hover a {
+        transform: translateX(-50px) scale(1);
+        bottom: -130px;
+        opacity: 1;
+    }
+    /* proba */
+
 
 /* VEZÉRLŐK */
 
@@ -111,7 +138,7 @@ body {
     }
 
     /* Fej */
-        .lightsaber__hilt--1-diskette {
+        .lightsaber__hilt--head-diskette {
             display: block;
             height: 6px;
             width: 20px;
@@ -119,7 +146,7 @@ body {
             border-bottom-right-radius: 3px;
         }
 
-        .lightsaber__hilt--1-triangle {
+        .lightsaber__hilt--head-triangle {
             display: block;
             height: 6px;
             width: 12px;
@@ -127,7 +154,7 @@ body {
             border-top-right-radius: 10px;
         }
 
-        .lightsaber__hilt--1-rounded {
+        .lightsaber__hilt--head-rounded {
             display: block;
             height: 6px;
             width: 12px;
@@ -136,7 +163,7 @@ body {
             border-top-left-radius: 3px;
         }
 
-        .lightsaber__hilt--1-flat {
+        .lightsaber__hilt--head-flat {
             display: block;
             height: 6px;
             width: 12px;
@@ -144,19 +171,19 @@ body {
         }
     
     /* Nyak */
-        .lightsaber__hilt--2-none {
+        .lightsaber__hilt--neck-none {
             display: block;
             height: 0px;
         }
 
-        .lightsaber__hilt--2-thin {
+        .lightsaber__hilt--neck-thin {
             display: block;
             height: 12px;
             width: 8px;
             margin: 0 6px;
         }
 
-        .lightsaber__hilt--2-simple {
+        .lightsaber__hilt--neck-simple {
             display: block;
             height: 12px;
             width: 12px;
@@ -164,7 +191,7 @@ body {
         }
 
     /* Közép */
-        .lightsaber__hilt--3 {
+        .lightsaber__hilt--mid {
             display: block;
             height: 40px;
             width: 12px;
@@ -172,7 +199,7 @@ body {
         }
 
     /* Vég */
-        .lightsaber__hilt--4 {
+        .lightsaber__hilt--end {
             display: block;
             height: 40px;
             width: 12px;
